@@ -14,6 +14,7 @@ export async function createServiceController(req , res) {
             success:true,
             message:'Service created successfully',
             data:response
+            
         })
     } catch (error) {
         return res.status(400).json({
