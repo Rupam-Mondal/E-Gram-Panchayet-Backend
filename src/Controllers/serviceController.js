@@ -25,7 +25,6 @@ export async function createServiceController(req , res) {
 
 export async function DeleteServiceController(req , res){
     try {
-        console.log(req.body);
         const response = await DeleteServiceService({ 
             serviceId:req.body.serviceId,
             userId:req.user.id

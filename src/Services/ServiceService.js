@@ -17,14 +17,10 @@ export async function createServiceService(createServiceObject){
 export async function DeleteServiceService({serviceId , userId}) {
     try {
         const service = await findServiceById(serviceId);
-        console.log(service.madeby.toString())
-        console.log(userId)
-        if(service.madeby.toString().trim() != userId.trim()){
+        if(service.madeby != userId){
             throw null;
         }
-        console.log('hey')
-        const response = await DeleteServiceRepository(id);
-        console.log(response)
+        const response = await DeleteServiceRepository(service._id);
         return response;
 
     } catch (error) {

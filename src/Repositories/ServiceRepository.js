@@ -17,10 +17,10 @@ export async function createServiceRepository(ServiceObject) {
         throw error;
     }
 }
-export async function DeleteServiceRepository(ServiceId) {
+
+export async function DeleteServiceRepository(id){
     try {
-        const response = await Service.findByIdAndDelete(ServiceId);
-        console.log(response)
+        const response = await Service.findByIdAndDelete(id);
         return response;
     } catch (error) {
         throw error;
