@@ -3,6 +3,7 @@ import ConnectDb from './Config/Dbconfig.js';
 import userRouter from './Routes/UserRouter.js';
 import { isAuthenticate } from './middlewares/Authmiddleware.js';
 import upload from './Config/multerConfig.js';
+import serviceRouter from './Routes/serviceRouter.js';
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use('/api/user' , userRouter);
+app.use('/api/service', serviceRouter);
 
 app.get('/ping', isAuthenticate, upload.single('image') , (req , res) => {
     return res.json({
