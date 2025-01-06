@@ -28,7 +28,12 @@ export async function Signupcontroller(req , res) {
 
 export async function Signincontroller(req , res){
     try {
-        const response = await SigninService(req.body);
+        const response = await SigninService({
+            username:req.body.username,
+            email:req.body.email,
+            role:req.body.role,
+            password:req.body.password
+        });
         return res.status(200).json({
             success:true,
             message:"Signin successfull",

@@ -27,7 +27,7 @@ export async function SigninService(SigninObject){
         if(!response){
             throw null;
         }
-        const token = await createToken(SigninObject);
+        const token = await createToken({ ...SigninObject  , id:user._id});
         return {
             id:user.id,
             email:user.email,

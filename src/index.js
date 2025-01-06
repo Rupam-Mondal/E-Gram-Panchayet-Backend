@@ -14,7 +14,7 @@ app.use('/api/user' , userRouter);
 app.get('/ping', isAuthenticate, upload.single('image') , (req , res) => {
     return res.json({
         message: 'Hello World',
-        Imagepath: req.file.path
+        Imagepath: req?.file?.path
     });
 });
 
