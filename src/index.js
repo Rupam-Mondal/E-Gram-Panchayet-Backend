@@ -1,6 +1,7 @@
 import express from 'express';
 import ConnectDb from './Config/Dbconfig.js';
 import userRouter from './Routes/UserRouter.js';
+import { isAuthenticate } from './middlewares/Authmiddleware.js';
 
 const app = express();
 
@@ -9,7 +10,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/api/user' , userRouter);
 
-app.get('/' , (req , res) => {
+app.get('/', isAuthenticate , (req , res) => {
     return res.json({message: 'Hello World'});
 });
 
