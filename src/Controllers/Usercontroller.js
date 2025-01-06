@@ -1,4 +1,4 @@
-import { SignupService } from "../Services/Userservice.js";
+import { SigninService, SignupService } from "../Services/Userservice.js";
 
 export async function Signupcontroller(req , res) {
     try {
@@ -22,6 +22,22 @@ export async function Signupcontroller(req , res) {
         return res.status(400).json({
             success:false,
             message:"Invalid input"
+        })
+    }
+}
+
+export async function Signincontroller(req , res){
+    try {
+        const response = await SigninService(req.body);
+        return res.status(200).json({
+            success:true,
+            message:"Signin successfull",
+            data:response
+        });
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: "Credential mismatch"
         })
     }
 }
