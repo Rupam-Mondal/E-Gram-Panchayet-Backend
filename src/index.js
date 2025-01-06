@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/api/user' , userRouter);
 
-app.get('/', isAuthenticate, upload.single('image') , (req , res) => {
+app.get('/ping', isAuthenticate, upload.single('image') , (req , res) => {
     return res.json({
         message: 'Hello World',
         Imagepath: req.file.path
