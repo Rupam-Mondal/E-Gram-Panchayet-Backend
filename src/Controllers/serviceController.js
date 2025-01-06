@@ -1,4 +1,4 @@
-import { createServiceService } from "../Services/ServiceService.js";
+import { createServiceService, DeleteServiceService } from "../Services/ServiceService.js";
 
 export async function createServiceController(req , res) {
     try {
@@ -19,6 +19,27 @@ export async function createServiceController(req , res) {
         return res.status(400).json({
             success:false,
             message:"Service creation failed"
+        })
+    }
+}
+
+export async function DeleteServiceController(req , res){
+    try {
+        console.log(req.body);
+        const response = await DeleteServiceService({ 
+            serviceId:req.body.serviceId,
+            userId:req.user.id
+        });
+        return res.status(200).json({
+            success: true,
+            message: 'Service deleted successfully',
+            data: response
+        })
+
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: "Service deletion failed"
         })
     }
 }
