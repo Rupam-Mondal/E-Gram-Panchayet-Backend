@@ -1,5 +1,14 @@
-import { createApplicationRepository } from "../Repositories/ApplicationRepository.js";
+import { createApplicationRepository, getApplicationByIdRepository } from "../Repositories/ApplicationRepository.js";
 
+
+export async function getApplicationByIdService(id) {
+    try {
+        const response = await getApplicationByIdRepository(id);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
 export async function createApplicationService(Object) {
     try {
         const {user , comment , documents} = Object;
