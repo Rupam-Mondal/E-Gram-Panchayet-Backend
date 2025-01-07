@@ -1,7 +1,6 @@
-import { createUser, findUserByEmail } from "../Repositories/Userrepository.js";
+import { createUser, findUserByEmail, getUserByIdRepository } from "../Repositories/Userrepository.js";
 import bcrypt from 'bcrypt';
 import { createToken } from "../Utils/jwt.js";
-import e from "express";
 
 export async function SignupService(SignupObject){
     try {
@@ -36,6 +35,15 @@ export async function SigninService(SigninObject){
             token:token
         }
 
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function getUserbyIdService(id){
+    try {
+        const response = await getUserByIdRepository(id);
+        return response;
     } catch (error) {
         throw error;
     }

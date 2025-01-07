@@ -1,4 +1,4 @@
-import { SigninService, SignupService } from "../Services/Userservice.js";
+import { getUserbyIdService, SigninService, SignupService } from "../Services/Userservice.js";
 
 export async function Signupcontroller(req , res) {
     try {
@@ -43,6 +43,22 @@ export async function Signincontroller(req , res){
         return res.status(400).json({
             success: false,
             message: "Credential mismatch"
+        })
+    }
+}
+
+export async function getUserByIdController(req , res){
+    try {
+        const response = await getUserbyIdService(req.body.userId);
+        return res.status(200).json({
+            success:true,
+            message:"Data fetched successfully",
+            data:response
+        });
+    } catch (error) {
+        return res.status(400).json({
+            success:false,
+            message:"Some error occured"
         })
     }
 }

@@ -28,3 +28,12 @@ export async function findUserByEmail(email){
         return null;
     }
 }
+
+export async function getUserByIdRepository(id){
+    try {
+        const User = await findUserById(id);
+        return User;
+    } catch (error) {
+        throw error;
+    }
+}
