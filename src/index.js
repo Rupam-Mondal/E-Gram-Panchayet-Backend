@@ -4,6 +4,7 @@ import userRouter from './Routes/UserRouter.js';
 import { isAuthenticate } from './middlewares/Authmiddleware.js';
 import upload from './Config/multerConfig.js';
 import serviceRouter from './Routes/serviceRouter.js';
+import ApplicationRouter from './Routes/ApplicationRouter.js';
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/api/user' , userRouter);
 app.use('/api/service', serviceRouter);
+app.use('/api/Application' , ApplicationRouter);
 
 app.get('/ping', isAuthenticate, upload.single('image') , (req , res) => {
     return res.json({

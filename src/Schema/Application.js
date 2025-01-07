@@ -3,12 +3,17 @@ import mongoose from 'mongoose';
 const ApplicationSchema = new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'User'
+        ref:'User',
+        required:true,
     },
+    comment:{
+        type:String
+    },
+
     progress:{
         type:String,
         enum: ['Applied', 'Reviewed' , 'Done' , 'Failed'],
-        require:true,
+        required:true,
         default: 'Applied'
     },
     documents:[
