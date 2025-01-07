@@ -18,7 +18,7 @@ export async function SignupService(SignupObject){
 
 export async function SigninService(SigninObject){
     try {
-        const { email, username, password } = SigninObject;
+        const { email, username, role, password } = SigninObject;
         const user = await findUserByEmail(email);
         if (user.username != username) {
             throw null;

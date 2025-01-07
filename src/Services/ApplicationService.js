@@ -32,3 +32,18 @@ export async function createApplicationService(Object) {
         throw error;
     }
 }
+
+export async function UpdateApplicationService(id, user, progress){
+    try {
+        if(user.role != 'Officer' && user.role == 'Staff'){
+            throw null;
+        }
+        const Application = await getApplicationByIdRepository(id);
+        if (!Application) throw null;
+        Application.progress = progress;
+        const updateResponse = await Application.save();
+        return updateResponse;
+    } catch (error) {
+        throw error;
+    }
+}
