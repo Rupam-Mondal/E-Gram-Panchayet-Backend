@@ -18,3 +18,14 @@ export async function createApplicationRepository(ApplicationObject){
         throw error;
     }
 }
+
+export async function AllApplicationOnProgressRepo(progress){
+    try {
+        const Applications = await Application.find({
+            progress:progress
+        });
+        return Applications;
+    } catch (error) {
+        throw error;
+    }
+}

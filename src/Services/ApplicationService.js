@@ -1,4 +1,4 @@
-import { createApplicationRepository, getApplicationByIdRepository } from "../Repositories/ApplicationRepository.js";
+import { AllApplicationOnProgressRepo, createApplicationRepository, getApplicationByIdRepository } from "../Repositories/ApplicationRepository.js";
 
 
 export async function getApplicationByIdService(id) {
@@ -43,6 +43,19 @@ export async function UpdateApplicationService(id, user, progress){
         Application.progress = progress;
         const updateResponse = await Application.save();
         return updateResponse;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function AllApplicationOnStatusService(ApplicationObject) {
+    try {
+        const { userRole, progress } = ApplicationObject;
+        if(userRole != 'Officer' && userRole != 'Staff'){
+            throw null;
+        }
+        const response = await AllApplicationOnProgressRepo(progress);
+        return response;
     } catch (error) {
         throw error;
     }
