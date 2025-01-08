@@ -1,4 +1,4 @@
-import { getUserbyIdService, SigninService, SignupService } from "../Services/Userservice.js";
+import { getAllUserService, getUserbyIdService, SigninService, SignupService } from "../Services/Userservice.js";
 
 export async function Signupcontroller(req , res) {
     try {
@@ -59,6 +59,22 @@ export async function getUserByIdController(req , res){
         return res.status(400).json({
             success:false,
             message:"Some error occured"
+        })
+    }
+}
+
+export async function getAllUserController(req , res){
+    try {
+        const response = await getAllUserService();
+        return res.status(200).json({
+            success:true,
+            message:"Data fetched successfully",
+            data:response
+        });
+    } catch (error) {
+        return res.status(400).json({
+            success:false,
+            message:"Some error occured in user fetching"
         })
     }
 }
