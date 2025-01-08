@@ -8,7 +8,6 @@ export async function createServiceController(req , res) {
             image:req.file.path,
             madeby:req.user.id
         };
-        console.log(serviceObject);
         const response = await createServiceService(serviceObject);
         return res.status(201).json({
             success:true,
