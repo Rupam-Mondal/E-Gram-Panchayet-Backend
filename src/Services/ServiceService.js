@@ -1,4 +1,4 @@
-import { createServiceRepository, DeleteServiceRepository, findServiceById } from "../Repositories/ServiceRepository.js";
+import { createServiceRepository, DeleteServiceRepository, findServiceById, getAllService } from "../Repositories/ServiceRepository.js";
 import { findUserById } from "../Repositories/Userrepository.js";
 
 export async function createServiceService(createServiceObject){
@@ -23,6 +23,15 @@ export async function DeleteServiceService({serviceId , userId}) {
         const response = await DeleteServiceRepository(service._id);
         return response;
 
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function getAllServiceService() {
+    try {
+        const response = await getAllService();
+        return response;
     } catch (error) {
         throw error;
     }
