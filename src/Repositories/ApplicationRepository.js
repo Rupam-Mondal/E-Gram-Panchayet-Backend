@@ -1,5 +1,14 @@
 import Application from "../Schema/Application.js";
 
+export async function GetAllApplication(){
+    try {
+        const Application = await Application.find().populate('user');
+        return Application;
+    } catch (error) {
+        throw error;
+    }
+}
+
 export async function getApplicationByIdRepository(ApplicationId) {
     try {
         const response = await Application.findById(ApplicationId).populate('user');
