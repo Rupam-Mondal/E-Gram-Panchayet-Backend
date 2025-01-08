@@ -1,6 +1,6 @@
 import express from "express";
 import { isAuthenticate } from "../middlewares/Authmiddleware.js";
-import { AllApplicationOnStatusController, ApplicationController, getApplicationByIdController, UpdateApplicationController } from "../Controllers/ApplicationController.js";
+import { AllApplicationOnStatusController, ApplicationController, getAllApplicationController, getApplicationByIdController, UpdateApplicationController } from "../Controllers/ApplicationController.js";
 import upload from "../Config/multerConfig.js";
 
 const ApplicationRouter = express.Router();
@@ -9,5 +9,6 @@ ApplicationRouter.post('/createApplication', isAuthenticate, upload.array('image
 ApplicationRouter.get('/getdetails', isAuthenticate, getApplicationByIdController);
 ApplicationRouter.post('/updateApplication', isAuthenticate, UpdateApplicationController);
 ApplicationRouter.get('/details/progress', isAuthenticate, AllApplicationOnStatusController);
+ApplicationRouter.get('/details', isAuthenticate, getAllApplicationController);
 
 export default ApplicationRouter;

@@ -1,4 +1,4 @@
-import { AllApplicationOnStatusService, createApplicationService, getApplicationByIdService, UpdateApplicationService } from "../Services/ApplicationService.js";
+import { AllApplicationOnStatusService, createApplicationService, getAllApplicationService, getApplicationByIdService, UpdateApplicationService } from "../Services/ApplicationService.js";
 
 
 export async function getApplicationByIdController(req , res) {
@@ -64,6 +64,22 @@ export async function AllApplicationOnStatusController(req , res){
         return res.status(200).json({
             success:true,
             message:'Applications fetched successfully',
+            data:response
+        });
+    } catch (error) {
+        return res.status(400).json({
+            success:false,
+            message:"Error in application fetching"
+        });
+    }
+}
+
+export async function getAllApplicationController(req , res) {
+    try {
+        const response = await getAllApplicationService();
+        return res.status(200).json({
+            success:true,
+            message:"Applications fetched successfully",
             data:response
         });
     } catch (error) {

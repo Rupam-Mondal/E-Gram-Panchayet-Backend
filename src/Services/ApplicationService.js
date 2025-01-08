@@ -1,4 +1,4 @@
-import { AllApplicationOnProgressRepo, createApplicationRepository, getApplicationByIdRepository } from "../Repositories/ApplicationRepository.js";
+import { AllApplicationOnProgressRepo, createApplicationRepository, GetAllApplication, getApplicationByIdRepository } from "../Repositories/ApplicationRepository.js";
 
 
 export async function getApplicationByIdService(id) {
@@ -58,5 +58,15 @@ export async function AllApplicationOnStatusService(ApplicationObject) {
         return response;
     } catch (error) {
         throw error;
+    }
+}
+
+export async function getAllApplicationService(){
+    try {
+        const response = await GetAllApplication();
+        return response;
+    } catch (error) {
+        throw error;
+        
     }
 }

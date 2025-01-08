@@ -2,9 +2,10 @@ import Application from "../Schema/Application.js";
 
 export async function GetAllApplication(){
     try {
-        const Application = await Application.find().populate('user');
-        return Application;
+        const Applications = await Application.find().populate('user');
+        return Applications;
     } catch (error) {
+        console.log(error)
         throw error;
     }
 }
