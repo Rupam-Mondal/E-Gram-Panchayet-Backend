@@ -10,7 +10,7 @@ export async function getAllService(){
 }
 export async function findServiceById(id) {
     try {
-        const response = await Service.findById(id);
+        const response = await Service.findById(id).populate('madeby');
         return response;
     } catch (error) {
         throw error;
