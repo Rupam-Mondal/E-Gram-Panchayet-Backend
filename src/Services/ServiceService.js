@@ -36,3 +36,12 @@ export async function getAllServiceService() {
         throw error;
     }
 }
+
+export async function getServiceByIdService(serviceId){
+    try {
+        const response = await findServiceById(serviceId);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
