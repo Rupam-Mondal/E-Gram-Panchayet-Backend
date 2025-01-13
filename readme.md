@@ -9,22 +9,6 @@ This project is the backend for the E Gram Panchayet system. It allows officers 
 - Staff can update the progress of applications with statuses such as "Failed", "Done", "Working", and "In Progress".
 - Users can upload images and documents.
 
-## API Routes
-
-### User Routes
-- `POST /api/user/signup` - Register a new user
-- `POST /api/user/signin` - Login a user
-- `GET /api/user/userdetails` - Get user profile
-
-### Service Routes
-- `POST /api/service/createService` - Launch a new service (Officer only)
-- `DELETE /api/service/deleteService` - Delete a service (Officer only)
-
-### Application Routes
-- `POST /api/Application/createApplication` - Apply for a service
-- `GET /api/Application/details/progress` - Get a specific application on progress
-- `post /api/Application/updateApplication` - Update application status (Staff only)
-
 
 ## Environment Variables
 
