@@ -1,17 +1,41 @@
 import { createUser, findUserByEmail, getAllUser, getUserByIdRepository } from "../Repositories/Userrepository.js";
 import bcrypt from 'bcrypt';
 import { createToken } from "../Utils/jwt.js";
+import { officer_code, staff_code } from "../Config/ServerConfig.js";
 
-export async function SignupService(SignupObject){
+export async function SignupService(SignupObject , code){
     try {
-        const response = await createUser(SignupObject);
-        if(!response){
-            throw null;
+        if(SignupObject.role == 'Officer' || SignupObject.role == 'Staff'){
+            if(!code){
+                throw null;
+            }
+            if(SignupObject.role == 'Officer' && code == officer_code){
+                const response = await createUser(SignupObject);
+                if (!response) {
+                    throw null;
+                }
+                return response;
+            }
+            else if (SignupObject.role == 'Staff' && code == staff_code){
+                const response = await createUser(SignupObject);
+                if (!response) {
+                    throw null;
+                }
+                return response;
+            }
         }
-        return response;
-    } catch (error) {
-        console.log("Some error occured");
+        else{
+            const response = await createUser(SignupObject);
+            if (!response) {
+                throw null;
+            }
+            return response;
+        }
         return null;
+    } catch (error) {
+        console.log(error)
+        console.log("Some error occured");
+        throw error;
     }
 }
 

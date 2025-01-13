@@ -8,7 +8,8 @@ export async function Signupcontroller(req , res) {
             password:req.body.password,
             role:req.body.role
         };
-        const response = await SignupService(signupObject);
+        const code = req.body.code || null;
+        const response = await SignupService(signupObject , code);
         if(!response){
             throw null;
         }

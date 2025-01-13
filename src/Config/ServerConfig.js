@@ -7,3 +7,5 @@ export const jwt_secret_key = process.env.SECRET_KEY_JWT;
 export const cdn_api_key = process.env.CDN_API_KEY;
 export const cdn_api_secret_key = process.env.CDN_API_SECRET_KEY;
 export const cloud_name = process.env.CLOUD_NAME;
+export const officer_code = process.env.OFFICER_CODE;
+export const staff_code = process.env.STAFF_CODE;
