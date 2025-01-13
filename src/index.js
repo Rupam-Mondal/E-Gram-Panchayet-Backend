@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import ConnectDb from './Config/Dbconfig.js';
 import userRouter from './Routes/UserRouter.js';
 import { isAuthenticate } from './middlewares/Authmiddleware.js';
@@ -8,6 +9,8 @@ import ApplicationRouter from './Routes/ApplicationRouter.js';
 
 const app = express();
 
+
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
