@@ -14,7 +14,7 @@ export async function Signupcontroller(req , res) {
             throw null;
         }
         return res.status(201).json({
-            success:false,
+            success:true,
             message:"Registration successfull",
             data:response
         })
@@ -30,10 +30,10 @@ export async function Signupcontroller(req , res) {
 export async function Signincontroller(req , res){
     try {
         const response = await SigninService({
-            username:req.body.username,
-            email:req.body.email,
-            role:req.body.role,
-            password:req.body.password
+            username:req.query.username,
+            email:req.query.email,
+            role:req.query?.role,
+            password:req.query.password
         });
         return res.status(200).json({
             success:true,
@@ -41,7 +41,7 @@ export async function Signincontroller(req , res){
             data:response
         });
     } catch (error) {
-        return res.status(400).json({
+        return res.status(200).json({
             success: false,
             message: "Credential mismatch"
         })
