@@ -61,7 +61,7 @@ export async function getAllServiceController(req , res) {
 
 export async function getServiceByIdController(req , res){
     try {
-        const response = await getServiceByIdService(req.body.serviceId);
+        const response = await getServiceByIdService(req.query.serviceId);
         return res.status(200).json({
             success:true,
             message:"Data fetched successfully",
