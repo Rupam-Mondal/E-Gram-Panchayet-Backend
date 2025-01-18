@@ -22,7 +22,8 @@ export async function ApplicationController(req , res) {
         const ApplicationObject = {
             user:req.user.id,
             comment:req.body.comment,
-            documents:req.files
+            documents:req.files,
+            service: req.body.service
         }
         const response = await createApplicationService(ApplicationObject);
         return res.status(201).json({
@@ -56,9 +57,10 @@ export async function UpdateApplicationController(req , res) {
 
 export async function AllApplicationOnStatusController(req , res){
     try {
+        console.log(req.query.progress)
         const ObjectDetails = {
             userRole:req.user.role,
-            progress:req.body.progress
+            progress:req.query.progress
         };
         const response = await AllApplicationOnStatusService(ObjectDetails);
         return res.status(200).json({

@@ -11,10 +11,11 @@ export async function getApplicationByIdService(id) {
 }
 export async function createApplicationService(Object) {
     try {
-        const {user , comment , documents} = Object;
+        const { user, comment, documents, service } = Object;
         const ApplicationObject = {
             user:user,
             comment:comment,
+            service: service,
             documents:[]
         };
 
@@ -51,9 +52,10 @@ export async function UpdateApplicationService(id, user, progress){
 export async function AllApplicationOnStatusService(ApplicationObject) {
     try {
         const { userRole, progress } = ApplicationObject;
-        if(userRole != 'Officer' && userRole != 'Staff'){
-            throw null;
-        }
+        // if(userRole != 'Officer' && userRole != 'Staff'){
+        //     throw null;
+        // }
+        // console.log("Here");
         const response = await AllApplicationOnProgressRepo(progress);
         return response;
     } catch (error) {

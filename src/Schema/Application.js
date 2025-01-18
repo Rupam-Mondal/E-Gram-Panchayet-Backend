@@ -9,6 +9,11 @@ const ApplicationSchema = new mongoose.Schema({
     comment:{
         type:String
     },
+    service:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Service',
+        required:true
+    },
 
     progress:{
         type:String,
