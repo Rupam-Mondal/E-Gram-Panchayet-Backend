@@ -3,7 +3,7 @@ import { AllApplicationOnStatusService, createApplicationService, getAllApplicat
 
 export async function getApplicationByIdController(req , res) {
     try {
-        const response = await getApplicationByIdService(req.body.ApplicationId);
+        const response = await getApplicationByIdService(req.query.ApplicationId);
         return res.status(200).json({
             success: true,
             message: "Application fetched successfully",
@@ -57,7 +57,6 @@ export async function UpdateApplicationController(req , res) {
 
 export async function AllApplicationOnStatusController(req , res){
     try {
-        console.log(req.query.progress)
         const ObjectDetails = {
             userRole:req.user.role,
             progress:req.query.progress
